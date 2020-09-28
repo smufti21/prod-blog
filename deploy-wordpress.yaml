@@ -92,7 +92,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   namespace: production
-  name: wordpress-staging
+  name: wordpress
   annotations:
     #nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
