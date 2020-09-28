@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: wordpress
-  namespace: production
+  namespace: staging
   labels:
     app: wordpress
 spec:
@@ -18,7 +18,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: wp-pv-claim
-  namespace: production
+  namespace: staging
   labels:
     app: wordpress
 spec:
@@ -32,7 +32,7 @@ apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: wordpress
-  namespace: production
+  namespace: staging
   labels:
     app: wordpress
 spec:
@@ -81,7 +81,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-wp
-  namespace: production
+  namespace: staging
 type: Opaque
 stringData:
   username: root
@@ -91,14 +91,14 @@ stringData:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: production
-  name: wordpress-staging
+  namespace: staging
+  name: wordpress
   annotations:
     #nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
-  - host: blog.sm21.xyz
+  - host: stblog.sm21.xyz
     http:
       paths:
       #- path: /
